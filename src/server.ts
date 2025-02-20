@@ -7,7 +7,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 
 const start = async () => {
    app.register(fastifySwagger, {
-      routePrefix: "/documentation", // A rota para acessar a documentação
+      routePrefix: "/documentation",
       swagger: {
          info: {
             title: "API Example",
@@ -15,13 +15,13 @@ const start = async () => {
             version: "1.0.0",
          },
          tags: [
-            { name: "users", description: "User-related endpoints" }, // Tags para organizar os endpoints
+            { name: "users", description: "User-related endpoints" }
          ],
          consumes: ["application/json"],
          produces: ["application/json"],
       },
       uiConfig: {
-         docExpansion: "full", // Expansão inicial de todos os métodos
+         docExpansion: "full",
          deepLinking: false,
          filter: true,
       },
