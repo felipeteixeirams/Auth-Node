@@ -1,7 +1,7 @@
 import { ListQueryParams } from "@shared/types/ListQueryParams";
 import { PaginatedResponse } from "@shared/types/PaginatedResponse";
 import { IBaseRepository } from "@domain/interfaces/repositories/IBaseRepository";
-import knex from "infrastructure/config/knex";
+import knex from "@infrastructure/config/knex";
 
 export default abstract class BaseRepository<TEntity> implements IBaseRepository<TEntity> {
    protected tableName: string;

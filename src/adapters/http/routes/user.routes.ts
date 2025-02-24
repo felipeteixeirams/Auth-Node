@@ -5,8 +5,8 @@ import UserController from "@adapters/http/controllers/UserController";
 export async function userRoutes(userRoute: FastifyInstance) {
    const userController = container.resolve(UserController);
 
-   userRoute.post("/users", userController.create.bind(userController));
-   userRoute.get("/users/:id", userController.findById.bind(userController));
-   userRoute.get("/users", userController.getList.bind(userController));
-   userRoute.delete("/users/:id", userController.delete.bind(userController));
+   userRoute.post("/Users", userController.create.bind(userController));
+   userRoute.get("/Users/:id", userController.findById.bind(userController));
+   userRoute.get("/Users", userController.getList.bind(userController));
+   userRoute.delete("/Users/:id", userController.delete.bind(userController));
 }

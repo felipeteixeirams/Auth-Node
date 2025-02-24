@@ -1,9 +1,11 @@
 import { inject, injectable } from "tsyringe";
-import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { FastifyReply, FastifyRequest } from "fastify";
+import { Controller, POST, GET, DELETE, type RouteConfig } from "fastify-decorators";
 import IUserApp from "@domain/interfaces/application/IUserApp";
-import User from "@domain/entities/User";
 import { ListQueryParams } from "@shared/types/ListQueryParams";
+import type { RequestUserDTO } from "@applications/dtos/User/RequestUserDTO";
 
+@Controller("/users")
 @injectable()
 export default class UserController {
    constructor(
@@ -11,14 +13,22 @@ export default class UserController {
       private userApp: IUserApp
    ) { }
 
-   async create(request: FastifyRequest<{ Body: User }>, reply: FastifyReply) {
-      try {
-         const user = await this.userApp.create(request.body);
-         return reply.status(201).send(user);
-      } catch (error: any) {
-         return reply.status(500).send({ error: error.message });
-      }
+   @POST({
+      url: '/',
+      schema: {
+         summary: 'Criar usuário',
+         tags: ['Users'],
+         body: { $ref: "#/definitions/UserSchema" },
+         response: {
+            201: { $ref: "#/definitions/UserResponseSchema" },
+         },
+      },
+   } as RouteConfig)
+   async create(request: FastifyRequest<{ Body: RequestUserDTO }>, reply: FastifyReply) {
+      const user = await this.userApp.create(request.body);
+      return reply.status(201).send(user);
    }
+
    async findById(request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) {
       try {
          const user = await this.userApp.findById(request.params.id);

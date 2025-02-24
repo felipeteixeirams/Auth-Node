@@ -1,4 +1,7 @@
 {
   "cSpell.words": ["CONECTION"],
-  "postman.settings.dotenv-detection-notification-visibility": false
+  "postman.settings.dotenv-detection-notification-visibility": false,
+  "files.autoSave": "onFocusChange",
+  "editor.fontSize": 13,
+  "editor.fontFamily": "'JetBrains Mono Medium', 'monospace', monospace"
 }
