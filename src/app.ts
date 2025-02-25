@@ -5,7 +5,7 @@ import { setupSwagger } from "@infrastructure/config/swagger";
 import { registerRoutes } from "./adapters/http/routes";
 import { errorHandler } from "@infrastructure/http/middlewares/errorHandler";
 import { registerSchemas } from "@infrastructure/config/schemas";
-import knexConfig from '@infrastructure/config/knex';
+import knexConfig from './knexfile';
 
 const app = fastify({ logger: true });
 

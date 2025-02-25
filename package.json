@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "migrate:make": "knex migrate:make", // Para criar uma nova migração
-    "migrate:latest": "knex migrate:latest", // Para rodar as migrações pendentes
-    "migrate:rollback": "knex migrate:rollback", // Para reverter a última migração
+    "migrate:make": "knex migrate:make --knexfile ./src/knexfile.ts",
+    "migrate:latest": "knex migrate:latest --knexfile ./src/knexfile.ts",
+    "migrate:rollback": "knex migrate:rollback --knexfile ./src/knexfile.ts",
     "build": "tsc",
     "start": "node dist/server.ts",
     "dev": "ts-node src/server.ts",
